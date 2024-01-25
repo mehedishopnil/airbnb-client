@@ -1,5 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import { Disclosure, Transition } from "@headlessui/react";
+import { MdOutlineLuggage } from "react-icons/md";
 
 const HostingDashboard = () => {
   return (
@@ -9,13 +10,21 @@ const HostingDashboard = () => {
         <div className="lg:w-64 lg:flex-shrink-0">
           <ul className="menu p-4 text-gray-700 font-bold text-xl">
             <li>
-              <Link to="reservation">Reservations</Link>
+              <Link to="reservation">
+                <MdOutlineLuggage /> Reservations
+              </Link>
             </li>
             <li>
               <Link to="earnings">Earnings</Link>
             </li>
             <li>
-              <Link to="reservation">Reservations</Link>
+              <Link to="reservation">Insights</Link>
+            </li>
+            <li>
+              <Link to="reservation">Guidebooks</Link>
+            </li>
+            <li>
+              <Link to="reservation">Create a new list</Link>
             </li>
           </ul>
         </div>
@@ -32,7 +41,6 @@ const HostingDashboard = () => {
         <Disclosure as="div" className="lg:hidden">
           {({ open }) => (
             <>
-              
               <Transition
                 show={open}
                 enter="transition-transform duration-300"
@@ -51,7 +59,13 @@ const HostingDashboard = () => {
                       <Link to="earnings">Earnings</Link>
                     </li>
                     <li>
-                      <Link to="reservation">Reservations</Link>
+                      <Link to="reservation">Insights</Link>
+                    </li>
+                    <li>
+                      <Link to="reservation">Guidebooks</Link>
+                    </li>
+                    <li>
+                      <Link to="reservation">Create a new list</Link>
                     </li>
                   </ul>
                 </Disclosure.Panel>
