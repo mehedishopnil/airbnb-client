@@ -4,23 +4,35 @@ import Main from "../../layout/Main/Main";
 import HostingDashboard from "../../layout/HostingDashboard/HostingDashboard";
 import Reservations from "../../pages/Reservations/Reservations";
 import Earnings from "../../pages/Earnings/Earnings";
+import Insights from "../../pages/Insights/Insights";
+import GuideBooks from "../../pages/GuideBooks/GuideBooks";
+import CreateNewList from "../../pages/CreateNewList/CreateNewList";
+import Login from "../../pages/Login/Login";
+import Registration from "../../pages/Registration/Registration";
 
 export const router = createBrowserRouter([
-    // {
-    //     path: '/',
-    //     element:<Main></Main>,
-    //     children:[
-    //         {
-    //             path:'/',
-    //             element:<HostingDashboard></HostingDashboard>,
-                
-    //         }
-    //     ]
-    // },
-
-    
     {
         path: '/',
+        element:<Main></Main>,
+        children:[
+            {
+                path:'/',
+                element:<Home></Home>,
+            },
+            {
+                path:'login',
+                element: <Login></Login>
+            },
+            {
+                path: 'registration',
+                element: <Registration></Registration>
+            }
+        ]
+    },
+
+
+    {
+        path: 'hosing-dashboard',
         element: <HostingDashboard></HostingDashboard>,
         children: [
             {
@@ -31,6 +43,18 @@ export const router = createBrowserRouter([
             {
                 path: 'earnings',
                 element: <Earnings></Earnings>
+            },
+            {
+                path: 'insights',
+                element: <Insights></Insights>
+            },
+            {
+                path: 'guide-books',
+                element: <GuideBooks></GuideBooks>
+            },
+            {
+                path: 'create-new-list',
+                element: <CreateNewList></CreateNewList>
             }
         ]
     }

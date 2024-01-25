@@ -1,30 +1,42 @@
 import { Link, Outlet } from "react-router-dom";
 import { Disclosure, Transition } from "@headlessui/react";
 import { MdOutlineLuggage } from "react-icons/md";
+import { LiaMoneyBillSolid } from "react-icons/lia";
+import { TbBrandGoogleAnalytics } from "react-icons/tb";
+import { PiBookOpenText } from "react-icons/pi";
+import { MdAddHome } from "react-icons/md";
 
 const HostingDashboard = () => {
   return (
     <div>
       <div className="lg:flex">
         {/* Sidebar for LG screens */}
-        <div className="lg:w-64 lg:flex-shrink-0">
-          <ul className="menu p-4 text-gray-700 font-bold text-xl">
+        <div className="lg:w-64 lg:flex-shrink-0 bg-slate-200">
+          <ul className="menu p-4 text-gray-700 font-bold text-lg">
             <li>
               <Link to="reservation">
                 <MdOutlineLuggage /> Reservations
               </Link>
             </li>
             <li>
-              <Link to="earnings">Earnings</Link>
+              <Link to="earnings">
+                <LiaMoneyBillSolid /> Earnings
+              </Link>
             </li>
             <li>
-              <Link to="reservation">Insights</Link>
+              <Link to="insights">
+                <TbBrandGoogleAnalytics /> Insights
+              </Link>
             </li>
             <li>
-              <Link to="reservation">Guidebooks</Link>
+              <Link to="guide-books">
+                <PiBookOpenText /> Guidebooks
+              </Link>
             </li>
             <li>
-              <Link to="reservation">Create a new list</Link>
+              <Link to="create-new-list">
+                <MdAddHome /> Create a new list
+              </Link>
             </li>
           </ul>
         </div>
