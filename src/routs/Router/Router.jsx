@@ -9,6 +9,7 @@ import GuideBooks from "../../pages/GuideBooks/GuideBooks";
 import CreateNewList from "../../pages/CreateNewList/CreateNewList";
 import Login from "../../pages/Login/Login";
 import Registration from "../../pages/Registration/Registration";
+import Profile from "../../pages/Profile/Profile";
 
 export const router = createBrowserRouter([
     {
@@ -55,6 +56,10 @@ export const router = createBrowserRouter([
             {
                 path: 'create-new-list',
                 element: <CreateNewList></CreateNewList>
+            },
+            {
+                path: 'profile',
+                element: <Profile></Profile>
             }
         ]
     }

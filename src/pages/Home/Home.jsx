@@ -53,12 +53,12 @@ const Home = () => {
   return (
     <div className="container mx-auto">
       {/* Filter Section */}
-      <div className="flex flex-col items-center mb-4 pt-10 px-4 md:px-10">
+      <div className="flex flex-col items-center mb-4 pt-10 mx-4 md:px-10">
         <div className="flex items-center space-y-2 md:space-x-2 md:space-y-0">
           {categories.map((category, index) => (
             <button
               key={index}
-              className={`flex justify-center items-center mr-5 mt-2 md:m-0 px-5  py-5 border rounded ${
+              className={`flex justify-center items-center mr-5 mt-2 md:m-0 p-4 md:p-5 border rounded ${
                 selectedCategory === category ? 'bg-blue-500 text-white' : ''
               }`}
               onClick={() => setSelectedCategory(category)}
@@ -71,7 +71,7 @@ const Home = () => {
       </div>
 
       {/* Cards Section */}
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
         {filteredData.map((item, index) => (
           <Cards key={index} data={item} />
         ))}
