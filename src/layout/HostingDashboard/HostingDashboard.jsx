@@ -5,11 +5,13 @@ import { LiaMoneyBillSolid } from "react-icons/lia";
 import { TbBrandGoogleAnalytics } from "react-icons/tb";
 import { PiBookOpenText } from "react-icons/pi";
 import { MdAddHome } from "react-icons/md";
+import { FaHome, FaUser } from "react-icons/fa";
 
 const HostingDashboard = () => {
   return (
     <div>
       <div className="lg:flex">
+
         {/* Sidebar for LG screens */}
         <div className="lg:w-64 lg:flex-shrink-0 bg-slate-200">
           <ul className="menu p-4 text-gray-700 font-bold text-lg">
@@ -38,6 +40,18 @@ const HostingDashboard = () => {
                 <MdAddHome /> Create a new list
               </Link>
             </li>
+
+            <div className="border border-gray-400"></div>
+
+            <li>
+              <Link to="/">
+              <FaHome /> Home
+              </Link>
+
+              <Link to="profile">
+              <FaUser /> Profile
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -47,6 +61,8 @@ const HostingDashboard = () => {
           <Outlet />
         </div>
       </div>
+
+
 
       {/* Mobile navigation */}
       <div className="lg:hidden">

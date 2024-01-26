@@ -5,12 +5,10 @@ const Login = () => {
   
   return (
     <div
-      className=" flex justify-center items-center h-[700px]  bg-base-100"
-      style={{ backgroundImage: `url()` }}
+      className=" flex justify-center items-center h-full  bg-base-100"
     >
       <div
-        className="hero w-9/12 h-auto p-10 shadow-2xl rounded bg-base-200"
-        style={{ backgroundImage: `url()` }}
+        className="hero w-full h-auto p-10  rounded bg-base-200"
       >
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">

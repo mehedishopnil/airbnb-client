@@ -15,11 +15,11 @@ const Header = () => {
       <div className="flex items-center justify-between">
         {/* Logo */}
         <div>
-          <img
+          <Link to='/'><img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png"
             className="w-20 md:w-32"
             alt="Airbnb Logo"
-          />
+          /></Link>
         </div>
 
         {/* Hamburger Button for Mobile */}
@@ -50,13 +50,27 @@ const Header = () => {
                         </Link>
                       </li>
                       <li>
-                        <Link to="login" onClick={() => setMobileMenuOpen(false)}>
+                        <Link to="hosing-dashboard" onClick={() => setMobileMenuOpen(false)}>
+                          Hosting
+                        </Link>
+                      </li>
+                      
+                      <li>
+                        <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
+                          Contact
+                        </Link>
+                      </li>
+
+
+                      {/* Add other mobile menu links as needed */}
+                      <li>
+                        <Link to="/login" onClick={() => setMobileMenuOpen(false)}>
                           Login
                         </Link>
                       </li>
                       <li>
                         <Link
-                          to="registration"
+                          to="/registration"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           Registration
@@ -70,15 +84,17 @@ const Header = () => {
           </Disclosure>
         </div>
 
-        {/* Navigation Links */}
+        {/*Desktop Navigation Links */}
         <div className="hidden md:flex gap-10 font-semibold text-lg text-gray-700">
-          <Link to="/">Home</Link>
+          
+          <Link to="hosing-dashboard">Hosting</Link>
+          <Link to="/contact">Contact</Link>
         </div>
 
         {/* Login and Registration Links */}
         <div className="hidden md:flex gap-5 justify-end">
-          <Link to="login">Login</Link>
-          <Link to="registration">Registration</Link>
+          <Link to="/login">Login</Link>
+          <Link to="/registration">Registration</Link>
         </div>
       </div>
     </div>
