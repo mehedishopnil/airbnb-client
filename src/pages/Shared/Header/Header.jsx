@@ -51,7 +51,7 @@ const Header = () => {
                       </li>
                       <li>
                         <Link to="hosing-dashboard" onClick={() => setMobileMenuOpen(false)}>
-                          Hosting
+                          My Hosting
                         </Link>
                       </li>
                       
@@ -87,7 +87,7 @@ const Header = () => {
         {/*Desktop Navigation Links */}
         <div className="hidden md:flex gap-10 font-semibold text-lg text-gray-700">
           
-          <Link to="hosing-dashboard">Hosting</Link>
+          <Link to="hosing-dashboard">My Hosting</Link>
           <Link to="/contact">Contact</Link>
         </div>
 
