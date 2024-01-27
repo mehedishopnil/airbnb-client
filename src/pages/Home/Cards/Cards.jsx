@@ -5,7 +5,7 @@ const Cards = ({ data }) => {
   
     return (
       <div className="w-[360px]  space-y-10 md:w-[500px] lg:w-[500px] p-4 md:gap-5">
-        <Link>
+        <Link to='/'>
         <div className="bg-white p-4 rounded-lg shadow-md">
 
           {/* Exclude category from displaying */}
