@@ -1,22 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { FaTree, FaUmbrellaBeach, FaWarehouse } from 'react-icons/fa';
 import Cards from './Cards/Cards';
 import { MdHouseboat } from 'react-icons/md';
 import { GiIsland } from "react-icons/gi";
+import { AuthContext } from '../../providers/AuthProvider/AuthProvider';
 
 const Home = () => {
-  const [hotelData, setHotelData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
 
-  useEffect(() => {
-    // Fetch JSON data from the public folder
-    fetch('hotelData.json')
-      .then((response) => response.json())
-      .then((data) => setHotelData(data))
-      .catch((error) => console.error('Error fetching JSON:', error));
-  }, []);
+  const {hotelData} = useContext(AuthContext);
 
   // Get unique categories from the JSON data
   const categories = Array.from(new Set(hotelData.map((item) => item.category)));

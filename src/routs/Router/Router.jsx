@@ -10,6 +10,7 @@ import CreateNewList from "../../pages/CreateNewList/CreateNewList";
 import Login from "../../pages/Login/Login";
 import Registration from "../../pages/Registration/Registration";
 import Profile from "../../pages/Profile/Profile";
+import PrivateRout from "./PrivateRout";
 
 export const router = createBrowserRouter([
     {
@@ -34,7 +35,7 @@ export const router = createBrowserRouter([
 
     {
         path: 'hosing-dashboard',
-        element: <HostingDashboard></HostingDashboard>,
+        element: <PrivateRout><HostingDashboard></HostingDashboard></PrivateRout>,
         children: [
             {
                 path:'reservation',
