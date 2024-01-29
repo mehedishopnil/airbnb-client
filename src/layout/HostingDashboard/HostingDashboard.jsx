@@ -6,6 +6,7 @@ import { TbBrandGoogleAnalytics } from "react-icons/tb";
 import { PiBookOpenText } from "react-icons/pi";
 import { MdAddHome } from "react-icons/md";
 import { FaHome, FaUser } from "react-icons/fa";
+import { HiOutlineHomeModern } from "react-icons/hi2";
 
 const HostingDashboard = () => {
   return (
@@ -15,6 +16,11 @@ const HostingDashboard = () => {
         {/* Sidebar for LG screens */}
         <div className="lg:w-64 lg:flex-shrink-0 bg-slate-200">
           <ul className="menu p-4 text-gray-700 font-bold text-lg">
+            <li>
+              <Link to="listings">
+              <HiOutlineHomeModern /> Listings
+              </Link>
+            </li>
             <li>
               <Link to="reservation">
                 <MdOutlineLuggage /> Reservations

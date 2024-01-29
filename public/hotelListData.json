@@ -1,0 +1,43 @@
+[
+    {
+      "id": 1,
+      "name": "Vacation Village Resort",
+      "description": "Glamorous 2-bedroom condo with 7 hot tubs and 7 large pools. Located in the heart of Orlando.",
+      "location": "Orlando, Florida",
+      "image": "https://i.ibb.co/4RTYTdT/list-1.jpg",
+      "category": "vacation"
+    },
+    {
+      "id": 2,
+      "name": "Wyndham Bonnet Creek Resort",
+      "description": "Stay on Disney property with lazy rivers. Stylish condos that feel like heaven on earth.",
+      "location": "Orlando, Florida",
+      "image": "https://i.ibb.co/HxhQXbk/list-2.webp",
+      "category": "vacation"
+    },
+    {
+      "id": 3,
+      "name": "Orlando Sunshine Resort",
+      "description": "Luxurious condo 7 minutes from Universal. Features water park, lake views, and more. Known for being heaven on earth.",
+      "location": "Orlando, Florida",
+      "image": "https://i.ibb.co/S35KGsc/list-3.jpg",
+      "category": "vacation"
+    },
+    {
+      "id": 4,
+      "name": "Wyndham Ocean Walk",
+      "description": "Oceanfront condos with full kitchen. Best location, 1 minute walking from all attractions.",
+      "location": "Daytona Beach, Florida",
+      "image": "https://i.ibb.co/mvCqTJQ/list-4.jpg",
+      "category": "vacation"
+    },
+    {
+      "id": 5,
+      "name": "Wyndham New Orleans French",
+      "description": "Cozy retreat for history explorers. Located on Bourbon St., offering a prime location.",
+      "location": "New Orleans, Louisiana",
+      "image": "https://i.ibb.co/NmYJjSK/list-5.jpg",
+      "category": "vacation"
+    }
+  ]
+  

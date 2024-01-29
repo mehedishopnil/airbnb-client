@@ -6,7 +6,7 @@ const Reservations = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState('All');
 
-  const { hotelData = [] } = useContext(AuthContext);
+  const { hotelData = [], loading } = useContext(AuthContext);
 
   useEffect(() => {
     // Initial rendering with 'All' filter
@@ -17,8 +17,8 @@ const Reservations = () => {
     let filteredData;
 
     if (filter === 'All') {
-      // Filter out 'Beach' category
-      filteredData = hotelData.filter((item) => item.category !== 'Beach');
+      // Filter for 'Farmer' category
+      filteredData = hotelData.filter((item) => item.category === 'Farms');
     } else {
       // Filter data based on other filters
       filteredData = hotelData.filter((item) => item.category === filter);
@@ -29,14 +29,32 @@ const Reservations = () => {
   };
 
   const renderFilteredData = () => {
+    if (loading) {
+      // Show loading indicator while data is being fetched
+      return <div>Loading...</div>;
+    }
+
+    if (filteredData.length === 0) {
+      // No results found
+      if (selectedFilter === 'Upcoming') {
+        return <div className='flex justify-center md:justify-center mt-10'>
+          <p className='text-lg font-semibold text-center'>You have no upcoming reservations.</p>
+        </div>
+      } else {
+        return <div className='flex justify-center mt-10'>
+          <p className='text-lg font-semibold text-center'>No results found.<br></br><span className='font-normal text-gray-600'> Please try a different filter.</span></p>
+        </div>
+      }
+    }
+
     return filteredData.map((item, index) => (
       <InfoCard key={index} data={item} />
     ));
   };
 
   return (
-    <div className="container mx-auto">
-      <h2 className="text-2xl mb-4">Reservations</h2>
+    <div className="container mx-auto flex flex-col justify-center items-center md:ml-10 mt-5">
+      <h2 className="text-xl md:text-3xl font-bold mb-4">Reservations</h2>
 
       {/* Filter Section */}
       <div className="flex items-center justify-center gap-10 mb-4">
@@ -70,7 +88,7 @@ const Reservations = () => {
       </div>
 
       {/* Cards Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 justify-center items-center gap-5">
         {renderFilteredData()}
       </div>
     </div>

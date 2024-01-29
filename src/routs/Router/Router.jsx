@@ -11,6 +11,7 @@ import Login from "../../pages/Login/Login";
 import Registration from "../../pages/Registration/Registration";
 import Profile from "../../pages/Profile/Profile";
 import PrivateRout from "./PrivateRout";
+import Listings from "../../pages/Listings/Listings";
 
 export const router = createBrowserRouter([
     {
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
             {
                 path: 'profile',
                 element: <Profile></Profile>
+            },
+            {
+                path: 'listings',
+                element: <Listings></Listings>
             }
         ]
     }
