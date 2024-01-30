@@ -2,40 +2,40 @@ import { useContext, useEffect, useState } from 'react';
 import { FaTree, FaUmbrellaBeach, FaWarehouse } from 'react-icons/fa';
 import Cards from './Cards/Cards';
 import { MdHouseboat } from 'react-icons/md';
-import { GiIsland } from "react-icons/gi";
+import { GiIsland } from 'react-icons/gi';
 import { AuthContext } from '../../providers/AuthProvider/AuthProvider';
+import { BsSearch } from 'react-icons/bs';
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState(''); // New state for search term
   const itemsPerPage = 9;
 
-  const {hotelData} = useContext(AuthContext);
+  const { hotelData } = useContext(AuthContext);
 
-  // Get unique categories from the JSON data
   const categories = Array.from(new Set(hotelData.map((item) => item.category)));
 
-  // Define icons for each category
   const categoryIcons = {
     'Tropical': <FaTree />,
     'Beach': <FaUmbrellaBeach />,
     'Tiny homes': <MdHouseboat />,
-    'Farms': <FaWarehouse />, // Using the same icon as Tiny Homes for demonstration, you can change it
-    'Islands': <GiIsland />, // Using the same icon as Beach for demonstration, you can change it
-    // Add more categories and their corresponding icons as needed
+    'Farms': <FaWarehouse />,
+    'Islands': <GiIsland />,
   };
 
-  // Filter cards based on the selected category and current page
-  const filteredData =
-    selectedCategory === 'All'
-      ? hotelData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
-      : hotelData
-          .filter((item) => item.category === selectedCategory)
-          .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  const filteredData = hotelData
+  .filter((item) => (selectedCategory === 'All' || item.category === selectedCategory))
+  .filter(
+    (item) =>
+      (item.name && item.name.toLowerCase().includes(searchTerm.toLowerCase())) ||
+      (item.location && item.location.toLowerCase().includes(searchTerm.toLowerCase()))
+  )
+  .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
-  // Calculate the total number of pages
+
   const totalPages = Math.ceil(
-    (selectedCategory === 'All' ? hotelData.length : hotelData.filter((item) => item.category === selectedCategory).length) / itemsPerPage
+    hotelData.filter((item) => selectedCategory === 'All' || item.category === selectedCategory).length / itemsPerPage
   );
 
   const handlePageChange = (newPage) => {
@@ -46,6 +46,18 @@ const Home = () => {
 
   return (
     <div className="container mx-auto">
+      {/* Search bar with search icon (Airbnb style) */}
+      <div className="flex items-center mb-4 bg-white rounded-full p-3 shadow">
+        <input
+          type="text"
+          placeholder="Search by name or location..."
+          className="w-full pl-4 outline-none"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <BsSearch size={20} className="text-gray-500" />
+      </div>
+
       {/* Filter Section */}
       <div className="flex flex-col items-center mb-4 pt-10 mx-4 md:px-10">
         <div className="flex items-center space-y-2 md:space-x-2 md:space-y-0">

@@ -12,8 +12,9 @@ const ListingCard = ({ item, index }) => {
           <img src={item.image} alt={`Listing ${index + 1}`} />
         </div>
       </div>
-      <div className="flex justify-center">
-        <div className="font-semibold  text-center">Your Apartment listing</div>
+      <div className=" ">
+        <p className="font-semibold  ">{item.name}</p>
+        <p>{item.description}</p>
       </div>
     </div>
     <button className="btn btn-ghost btn-xs"><IoIosArrowForward /></button>

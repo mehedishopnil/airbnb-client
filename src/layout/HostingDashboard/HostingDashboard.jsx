@@ -14,7 +14,7 @@ const HostingDashboard = () => {
       <div className="lg:flex">
 
         {/* Sidebar for LG screens */}
-        <div className="lg:w-64 lg:flex-shrink-0 bg-slate-200">
+        <div className="lg:w-64 lg:flex-shrink-0 md:bg-slate-200">
           <ul className="menu p-4 text-gray-700 font-bold text-lg">
             <li>
               <Link to="listings">
@@ -84,7 +84,7 @@ const HostingDashboard = () => {
                 leaveFrom="translate-x-0"
                 leaveTo="-translate-x-full"
               >
-                <Disclosure.Panel className="bg-gray-200 p-4">
+                <Disclosure.Panel className=" p-4">
                   <ul className="menu text-gray-700 font-bold text-xl">
                     <li>
                       <Link to="reservation">Reservations</Link>
