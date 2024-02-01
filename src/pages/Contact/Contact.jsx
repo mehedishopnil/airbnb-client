@@ -1,10 +1,11 @@
 import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../providers/AuthProvider/AuthProvider";
-import ListingCard from "./ListingCard";
-import { BsSearch } from "react-icons/bs";
 
-const Listings = () => {
-  const { hotelListData, loading, user } = useContext(AuthContext);
+import { BsSearch } from "react-icons/bs";
+import ListingCard from "../Listings/ListingCard";
+
+const Contact = () => {
+  const { hotelListData, loading } = useContext(AuthContext);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredListings, setFilteredListings] = useState([]);
 
@@ -35,24 +36,20 @@ const Listings = () => {
       </div>
       <div className="flex justify-start ml-10 md:ml-[280px]">
         <h2 className="text-xl font-semibold mb-5">
-          {user ? (loading ? "Loading..." : `${filteredListings.length} Listings`) : "Please log in to view listings"}
+          {loading ? "Loading..." : `${filteredListings.length} Listings`}
         </h2>
       </div>
       <div className="w-4/5 md:w-2/3 mx-auto">
-        {user && (
-          <>
-            {loading ? (
-              <p>Loading...</p> // You can replace this with a loading indicator or placeholder
-            ) : (
-              filteredListings.map((item, index) => (
-                <ListingCard key={item.id} item={item} index={index} />
-              ))
-            )}
-          </>
+        {loading ? (
+          <p>Loading...</p> // You can replace this with a loading indicator or placeholder
+        ) : (
+          filteredListings.map((item, index) => (
+            <ListingCard key={item.id} item={item} index={index} />
+          ))
         )}
       </div>
     </div>
   );
 };
 
-export default Listings;
+export default Contact;

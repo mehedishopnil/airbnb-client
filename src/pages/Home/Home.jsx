@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { FaTree, FaUmbrellaBeach, FaWarehouse } from 'react-icons/fa';
 import Cards from './Cards/Cards';
 import { MdHouseboat } from 'react-icons/md';
@@ -34,6 +34,7 @@ const Home = () => {
   .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
 
+
   const totalPages = Math.ceil(
     hotelData.filter((item) => selectedCategory === 'All' || item.category === selectedCategory).length / itemsPerPage
   );
@@ -46,21 +47,23 @@ const Home = () => {
 
   return (
     <div className="container mx-auto">
-      {/* Search bar with search icon (Airbnb style) */}
-      <div className="flex items-center mb-4 bg-white rounded-full p-3 shadow">
+      {/* Search bar with search icon */}
+      <div className="flex justify-center items-center mt-5 mb-4">
+      <div className="bg-white rounded-full border p-3 shadow w-4/5 mx-auto flex items-center">
+        <BsSearch size={20} className="text-gray-500 mr-2" />
         <input
           type="text"
           placeholder="Search by name or location..."
-          className="w-full pl-4 outline-none"
+          className="w-full h-10 pl-4 rounded-full outline-none"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <BsSearch size={20} className="text-gray-500" />
+      </div>
       </div>
 
       {/* Filter Section */}
-      <div className="flex flex-col items-center mb-4 pt-10 mx-4 md:px-10">
-        <div className="flex items-center space-y-2 md:space-x-2 md:space-y-0">
+      <div className="flex flex-col justify-center items-center mb-4 pt-10 mx-4 md:px-10">
+        <div className="flex items-center justify-center space-y-2 md:space-x-2 md:space-y-0">
           {categories.map((category, index) => (
             <button
               key={index}

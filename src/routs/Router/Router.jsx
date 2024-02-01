@@ -12,6 +12,8 @@ import Registration from "../../pages/Registration/Registration";
 import Profile from "../../pages/Profile/Profile";
 import PrivateRout from "./PrivateRout";
 import Listings from "../../pages/Listings/Listings";
+import Contact from "../../pages/Contact/Contact";
+import IndividualEarnings from "../../pages/IndividualEarnings/IndividualEarnings";
 
 export const router = createBrowserRouter([
     {
@@ -29,13 +31,21 @@ export const router = createBrowserRouter([
             {
                 path: 'registration',
                 element: <Registration></Registration>
+            },
+            {
+                path: 'contact',
+                element: <Contact></Contact>
+            },
+            {
+                path: 'individual-earnings/:id',
+                element: <IndividualEarnings></IndividualEarnings>
             }
         ]
     },
 
 
     {
-        path: 'hosing-dashboard',
+        path: '/hosting-dashboard',
         element: <PrivateRout><HostingDashboard></HostingDashboard></PrivateRout>,
         children: [
             {
@@ -66,7 +76,8 @@ export const router = createBrowserRouter([
             {
                 path: 'listings',
                 element: <Listings></Listings>
-            }
+            },
+            
         ]
     }
 ])

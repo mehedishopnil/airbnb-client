@@ -7,42 +7,87 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [hotelData, setHotelData] = useState([]);
   const [hotelListData, setHotelListData] = useState([]);
+  const [earningList, setEarningList] = useState([]);
 
   useEffect(() => {
     const fetchHotelData = async () => {
       setLoading(true);
       try {
-        const response = await fetch('hotelData.json');
+        const response = await fetch('https://airbnb-server-theta.vercel.app/hotelData');
+        if (!response.ok) {
+          throw new Error(`Error fetching hotelData.json: ${response.status} ${response.statusText}`);
+        }
         const data = await response.json();
         setHotelData(data);
-
-        // Fetch hotel list data separately
-        const listResponse = await fetch('hotelListData.json');
-        const listData = await listResponse.json();
-        setHotelListData(listData);
-
-        createUser();
       } catch (error) {
-        console.error('Error fetching JSON:', error);
+        console.error('Error fetching hotelData.json:', error.message);
       } finally {
-        setLoading(false); // Set loading to false regardless of success or failure
+        setLoading(false);
       }
     };
 
+    fetchHotelData();
+  }, []);
+
+  useEffect(() => {
+    const fetchHotelListData = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch('https://airbnb-server-theta.vercel.app/hotelListData');
+        if (!response.ok) {
+          throw new Error(`Error fetching hotelListData.json: ${response.status} ${response.statusText}`);
+        }
+        const data = await response.json();
+        setHotelListData(data);
+      } catch (error) {
+        console.error('Error fetching hotelListData.json:', error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchHotelListData();
+  }, []);
+
+  
+  useEffect(() => {
+    const fetchEarningList = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch('http://localhost:5000/earningList');
+        if (!response.ok) {
+          throw new Error(`Error fetching hotelListData.json: ${response.status} ${response.statusText}`);
+        }
+        const data = await response.json();
+        setEarningList(data);
+      } catch (error) {
+        console.error('Error fetching hotelListData.json:', error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchEarningList();
+  }, []);
+
+  useEffect(() => {
     const createUser = () => {
       const user = "Mehedi Hasan";
       setUser(user);
     };
 
-    // Fetch hotel data and hotel list data, and create user on mount
-    fetchHotelData();
-  }, []);
+    // Create user after fetching both hotelData and hotelListData
+    if (loading) {
+      createUser();
+    }
+  }, [loading]);
 
   const authInfo = {
     user,
     hotelData,
     hotelListData,
-    loading
+    loading,
+    earningList
   };
 
   return (
