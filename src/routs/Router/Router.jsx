@@ -53,6 +53,7 @@ export const router = createBrowserRouter([
                 element: <Reservations></Reservations>
 
             },
+           
             {
                 path: 'earnings',
                 element: <Earnings></Earnings>
@@ -76,6 +77,10 @@ export const router = createBrowserRouter([
             {
                 path: 'listings',
                 element: <Listings></Listings>
+            },
+            {
+                path: 'individual-earnings/:id',
+                element: <IndividualEarnings></IndividualEarnings>
             },
             
         ]
