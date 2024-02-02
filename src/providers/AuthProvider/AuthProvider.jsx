@@ -1,6 +1,8 @@
 import { createContext, useEffect, useState } from "react";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 export const AuthContext = createContext();
+const auth = getAuth();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -70,6 +72,13 @@ const AuthProvider = ({ children }) => {
     fetchEarningList();
   }, []);
 
+
+  //Authentication::
+  const login = (email, password) =>{
+    setLoading(true);
+    signInWithEmailAndPassword(auth, email, password)
+  };
+
   useEffect(() => {
     const createUser = () => {
       const user = "Mehedi Hasan";
@@ -87,7 +96,8 @@ const AuthProvider = ({ children }) => {
     hotelData,
     hotelListData,
     loading,
-    earningList
+    earningList,
+    login,
   };
 
   return (
