@@ -12,11 +12,11 @@ const Login = () => {
     const password = form.password.value;
 
     login(email, password)
-      .then((result) => {
-        const user = result.user;
-        alert(user);
+      .then((user) => {
+        alert(user); // Do something with the user object
       })
       .catch((error) => {
+        // Handle login error
         console.error("Login failed:", error);
       });
   };
@@ -81,7 +81,10 @@ const Login = () => {
                 </div>
                 <p>
                   Do not have an account? Please{" "}
-                  <Link to={"/registration"} className="font-bold text-[#D1A054]">
+                  <Link
+                    to={"/registration"}
+                    className="font-bold text-[#D1A054]"
+                  >
                     Register
                   </Link>
                 </p>

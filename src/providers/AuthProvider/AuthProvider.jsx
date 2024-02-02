@@ -1,8 +1,19 @@
 import { createContext, useEffect, useState } from "react";
+import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 export const AuthContext = createContext();
-const auth = getAuth();
+
+// Replace this with your actual Firebase config
+const firebaseConfig = {
+  apiKey: "your-api-key",
+  authDomain: "your-auth-domain",
+  projectId: "your-project-id",
+  // Add other config options here
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -51,7 +62,6 @@ const AuthProvider = ({ children }) => {
     fetchHotelListData();
   }, []);
 
-  
   useEffect(() => {
     const fetchEarningList = async () => {
       setLoading(true);
@@ -72,11 +82,20 @@ const AuthProvider = ({ children }) => {
     fetchEarningList();
   }, []);
 
-
-  //Authentication::
-  const login = (email, password) =>{
+  const login = (email, password) => {
     setLoading(true);
     signInWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+      })
+      .catch((error) => {
+        // Handle login error
+        console.error('Login failed:', error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   useEffect(() => {
