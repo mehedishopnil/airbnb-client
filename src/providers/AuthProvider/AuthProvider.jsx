@@ -54,7 +54,7 @@ const AuthProvider = ({ children }) => {
     const fetchEarningList = async () => {
       setLoading(true);
       try {
-        const response = await fetch('http://localhost:5000/earningList');
+        const response = await fetch('https://airbnb-server-theta.vercel.app/earningList');
         if (!response.ok) {
           throw new Error(`Error fetching hotelListData.json: ${response.status} ${response.statusText}`);
         }
