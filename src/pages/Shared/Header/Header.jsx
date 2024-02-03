@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Disclosure, Transition } from "@headlessui/react";
 import { MdMenu } from "react-icons/md";
+import { FaUserCircle } from "react-icons/fa";
 
 const Header = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -29,8 +30,9 @@ const Header = () => {
               <>
                 <Disclosure.Button
                   onClick={toggleMobileMenu}
-                  className="text-gray-700 hover:text-gray-900 focus:outline-none"
+                  className="flex gap-5 text-gray-700 hover:text-gray-900 focus:outline-none"
                 >
+                  <Link className="text-2xl" to="profile"><FaUserCircle/></Link>
                   <MdMenu size={24} />
                 </Disclosure.Button>
                 <Transition
@@ -50,6 +52,11 @@ const Header = () => {
                         </Link>
                       </li>
                       <li>
+                        <Link to="/" onClick={() => setMobileMenuOpen(false)}>
+                          Bookings
+                        </Link>
+                      </li>
+                      <li>
                         <Link to="/hosting-dashboard" onClick={() => setMobileMenuOpen(false)}>
                           My Hosting
                         </Link>
@@ -64,16 +71,8 @@ const Header = () => {
 
                       {/* Add other mobile menu links as needed */}
                       <li>
-                        <Link to="/login" onClick={() => setMobileMenuOpen(false)}>
-                          Login
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          to="/registration"
-                          onClick={() => setMobileMenuOpen(false)}
-                        >
-                          Registration
+                        <Link to="/" onClick={() => setMobileMenuOpen(false)}>
+                          LogOut
                         </Link>
                       </li>
                     </ul>
@@ -87,14 +86,16 @@ const Header = () => {
         {/*Desktop Navigation Links */}
         <div className="hidden md:flex gap-10 font-semibold text-lg text-gray-700">
           
+          <Link to="/">Home</Link>
+          <Link to="/">Bookings</Link>
           <Link to="hosting-dashboard">My Hosting</Link>
           <Link to="/contact">Contact</Link>
         </div>
 
         {/* Login and Registration Links */}
         <div className="hidden md:flex gap-5 justify-end">
-          <Link to="/login">Login</Link>
-          <Link to="/registration">Registration</Link>
+          <Link className="btn btn-sm" to="/">LogOut</Link>
+          <Link className="text-3xl" to="profile"><FaUserCircle/></Link>
         </div>
       </div>
     </div>

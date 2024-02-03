@@ -1,18 +1,9 @@
 import { createContext, useEffect, useState } from "react";
-import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import app from "../../firebase/firebase.config";
 
 export const AuthContext = createContext();
 
-// Replace this with your actual Firebase config
-const firebaseConfig = {
-  apiKey: "your-api-key",
-  authDomain: "your-auth-domain",
-  projectId: "your-project-id",
-  // Add other config options here
-};
-
-const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {

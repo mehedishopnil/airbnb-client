@@ -39,6 +39,10 @@ export const router = createBrowserRouter([
             {
                 path: 'individual-earnings/:id',
                 element: <IndividualEarnings></IndividualEarnings>
+            },
+            {
+                path: 'profile',
+                element: <Profile></Profile>
             }
         ]
     },
@@ -69,10 +73,6 @@ export const router = createBrowserRouter([
             {
                 path: 'create-new-list',
                 element: <CreateNewList></CreateNewList>
-            },
-            {
-                path: 'profile',
-                element: <Profile></Profile>
             },
             {
                 path: 'listings',
