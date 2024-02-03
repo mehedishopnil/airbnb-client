@@ -77,7 +77,9 @@ const Earnings = () => {
               {yearlyEarnings.map((entry) => (
                 <tr key={entry.year}>
                   <td className="border text-center border-gray-300 py-2 px-4">{entry.year}</td>
-                  <td className="border text-center border-gray-300 py-2 px-4">${entry.amount}</td>
+                  <td className="border text-center border-gray-300 py-2 px-4">
+                    {entry.amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 4 })}$
+                  </td>
                 </tr>
               ))}
             </tbody>

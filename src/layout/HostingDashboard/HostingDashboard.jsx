@@ -54,7 +54,7 @@ const HostingDashboard = () => {
               <FaHome /> Home
               </Link>
 
-              <Link to="profile">
+              <Link to="/profile">
               <FaUser /> Profile
               </Link>
             </li>
