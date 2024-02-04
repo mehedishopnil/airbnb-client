@@ -51,7 +51,7 @@ const Profile = () => {
 
       {/* Bottom Section */}
       <div className='lg:grid  lg:items-center lg:-ml-10 lg:-mt-5 lg:pr-10'>
-      <div className="ml-10  lg:col-span-4 lg:space-y-3">
+      <div className="mx-10  lg:col-span-4 lg:space-y-3">
         <div className="flex gap-1 items-center mb-2">
           <TbGenderFemale />
           <p className="text-gray-700">Born in the 70s</p>
@@ -69,14 +69,14 @@ const Profile = () => {
           <p className="text-gray-700">My work: CXO</p>
         </div>
 
-        <div className="flex gap-1 mb-2">
+        <div className="flex  gap-1 mb-2">
           <BsStars />
           <p className="text-gray-700">
             What makes my home unique: House built with recycled materials
           </p>
         </div>
 
-        <div className="flex gap-1 items-center mb-2">
+        <div className="flex gap-1 pt-2 mb-2">
           <MdOutlineLightbulbCircle />
           <p className="text-gray-700">
             Fun fact: I lived in 6 different countries
@@ -94,7 +94,7 @@ const Profile = () => {
             For guests, I always: Try to answer their needs
           </p>
         </div>
-        <div className="mx-5 px-2 lg:-m-3 lg:w-10/12">
+        <div className="lg:mx-5 pt-5 px-2 lg:-m-3 lg:w-10/12">
           <p>
             I'm 'your name', I've lived in 6 different countries, and I still
             spend way too much time traveling. Here at home, we have two dogs

@@ -63,6 +63,7 @@ const HostingDashboard = () => {
 
         {/* Content area */}
         <div className="lg:flex-grow">
+          
           {/* Page content here */}
           <Outlet />
         </div>

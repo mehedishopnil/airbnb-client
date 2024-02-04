@@ -10,13 +10,18 @@ const Listings = () => {
 
   useEffect(() => {
     // Filter the listings based on the search term
-    const filteredData = hotelListData.filter(
-      (item) =>
-        item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.location.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const filteredData = hotelListData.filter((item) => {
+      const itemName = item.name ? item.name.toLowerCase() : "";
+      const itemLocation = item.location ? item.location.toLowerCase() : "";
+      return (
+        itemName.includes(searchTerm.toLowerCase()) ||
+        itemLocation.includes(searchTerm.toLowerCase())
+      );
+    });
+  
     setFilteredListings(filteredData);
   }, [hotelListData, searchTerm]);
+  
 
   return (
     <div className="mt-8">

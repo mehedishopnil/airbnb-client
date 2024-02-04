@@ -1,6 +1,58 @@
-import { Link } from "react-router-dom";
 
 const CreateNewList = () => {
+
+  const handleAddProduct = async (event) => {
+    event.preventDefault();
+
+    try {
+      const form = event.target;
+      const guests = form.guests.value;
+      const bedrooms = form.bedrooms.value;
+      const beds = form.beds.value;
+      const bathrooms = form.bathrooms.value;
+      const placeType = form.placeType.value;
+      const name = form.name.value;
+      const location = form.location.value;
+      const category = form.category.value;
+      const image = form.image.value;
+      const description = form.description.value;
+      const totalData = {guests,
+        bedrooms,
+        beds,
+        bathrooms,
+        placeType,
+        location,
+        name,
+        category,
+        image,
+        description}
+        
+      const response = await fetch('http://localhost:5000/hotelListData', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(totalData),
+      });
+
+      if (response.ok) {
+        // Handle successful submission, e.g., redirect or show a success message
+        console.log('Form submitted successfully');
+        alert('Form submitted successfully');
+        console.log(totalData);
+        form.reset()
+      } else {
+        // Handle errors, e.g., show an error message
+        console.error('Form submission failed');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
+  };
+
+
+  
+
   return (
     <div className="hero w-full h-auto p-10 shadow-2xl rounded bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -9,18 +61,18 @@ const CreateNewList = () => {
             Create a new list
           </h1>
 
-          <form className="card-body">
+          <form className="card-body" onSubmit={handleAddProduct}>
             <div>
-              <div className="form-control ">
-                <h2 className="label text-base">Share some basic about your place:</h2>
+              <div className="form-control">
+                <h2 className="label text-base">Share some basic information about your place:</h2>
                 <div className="grid grid-cols-4 gap-5">
                   <label className="label">
                     <span className="label-text">Guests</span>
                   </label>
                   <input
                     type="number"
-                    placeholder="input your name"
-                    name="name"
+                    placeholder="Enter number of guests"
+                    name="guests"
                     className="input w-[70px] input-bordered"
                   />
 
@@ -29,8 +81,8 @@ const CreateNewList = () => {
                   </label>
                   <input
                     type="number"
-                    placeholder="input your name"
-                    name="name"
+                    placeholder="Enter number of bedrooms"
+                    name="bedrooms"
                     className="input w-[70px] input-bordered"
                   />
 
@@ -39,8 +91,8 @@ const CreateNewList = () => {
                   </label>
                   <input
                     type="number"
-                    placeholder="input your name"
-                    name="name"
+                    placeholder="Enter number of beds"
+                    name="beds"
                     className="input w-[70px] input-bordered"
                   />
 
@@ -49,23 +101,21 @@ const CreateNewList = () => {
                   </label>
                   <input
                     type="number"
-                    placeholder="input your name"
-                    name="name"
+                    placeholder="Enter number of bathrooms"
+                    name="bathrooms"
                     className="input w-[70px] input-bordered"
                   />
                 </div>
               </div>
 
               <div className="form-control">
-                <label className="label">
-                  <span className="label-text text-base">
-                    What type of place will guests have?
-                  </span>
+                <label className="label text-base">
+                  What type of place will guests have?
                 </label>
                 <select
                   name="placeType"
                   className="select select-bordered"
-                  defaultValue="" // Provide a default value if needed
+                  defaultValue=""
                 >
                   <option value="" disabled>
                     Select an option
@@ -77,17 +127,60 @@ const CreateNewList = () => {
               </div>
 
               <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Where your place located?</span>
-                </label>
+                <label className="label text-base">Where is your place located?</label>
                 <input
                   type="text"
-                  placeholder="place name"
-                  name="place"
+                  placeholder="Enter location name"
+                  name="location"
                   className="input input-bordered"
                 />
               </div>
-              
+
+              <div className="form-control">
+                <label className="label text-base">Input a nice name:</label>
+                <input
+                  type="text"
+                  placeholder="Name"
+                  name="name"
+                  className="input input-bordered"
+                />
+              </div>
+
+              <div className="form-control">
+                <label className="label text-base">
+                  Choose the Category
+                </label>
+                <select
+                  name="category"
+                  className="select select-bordered"
+                  defaultValue=""
+                >
+                  <option value="" disabled>
+                    Select an option
+                  </option>
+                  <option value="vacation">Vacation</option>
+                  {/* Add more categories as needed */}
+                </select>
+              </div>
+
+              <div className="form-control">
+                <label className="label text-base">Input Image Link</label>
+                <input
+                  type="text"
+                  placeholder="Enter image URL"
+                  name="image"
+                  className="input input-bordered"
+                />
+              </div>
+
+              <div className="form-control">
+                <label className="label text-base">Description</label>
+                <textarea
+                  placeholder="Enter a detailed description of your place..."
+                  name="description"
+                  className="textarea h-32 resize-none input-bordered"
+                ></textarea>
+              </div>
 
               <div className="form-control mt-6">
                 <input
