@@ -6,6 +6,7 @@ import { BsStars } from "react-icons/bs";
 import { MdOutlinePets } from "react-icons/md";
 import { MdOutlineLightbulbCircle } from "react-icons/md";
 import { MdOutlineRoomService } from "react-icons/md";
+import { FaStar } from 'react-icons/fa';
 
 const Profile = () => {
   return (
@@ -13,30 +14,30 @@ const Profile = () => {
       <div className='lg:grid  lg:justify-center '>
       <div className="grid grid-cols-5  lg:flex   p-5 m-10 border rounded-[30px] shadow-sm">
         {/* First Section (Left) */}
-        <div className="flex justify-end  items-center col-span-2 pr-8 lg:mr-10">
-          <div className="flex flex-col items-center lg:pl-5 mb-4">
+        <div className="flex justify-end  items-center col-span-3 pr-8 -m-5 lg:mr-10">
+          <div className="flex flex-col items-center lg:pl-5 ml-5">
             <img
-              className="rounded-full w-20 h-20 "
+              className="rounded-full w-16  lg:w-20 lg:h-20 "
               src="https://openclipart.org/download/247319/abstract-user-flat-3.svg"
               alt="Profile"
             />
 
             <div className="mt-2 text-center">
-              <h2 className="text-xl font-semibold">Ibrahim Elsamra</h2>
-              <p className="text-gray-500">Superhost</p>
+              <h2 className="text-sm lg:text-xl font-semibold">Ibrahim Elsamra</h2>
+              <p className="text-sm text-gray-500">Superhost</p>
             </div>
           </div>
           {/* Add more content as needed */}
         </div>
 
         {/* Second Section (Right) */}
-        <div className="flex flex-col items-center lg:items-center lg:m-5 text-left col-span-3">
+        <div className="flex flex-col items-center lg:items-center lg:m-5 text-left col-span-2">
           <div className="mb-4">
             <h2 className="text-2xl font-bold">88</h2>
             <p>Reviews</p>
           </div>
           <div className="mb-4">
-            <h2 className="text-2xl font-semibold">4.8</h2>
+            <h2 className="flex gap-1 items-center text-2xl font-semibold">4.8 <span className='text-xl '><FaStar /></span></h2>
             <p>Rating</p>
           </div>
           <div className="mb-4">
