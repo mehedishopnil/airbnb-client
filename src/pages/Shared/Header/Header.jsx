@@ -67,9 +67,15 @@ const Header = () => {
                           Contact
                         </Link>
                       </li>
-
-
+                      </ul>
+                      <div className="w-4/3 ml-8 border border-gray-400"></div>
                       {/* Add other mobile menu links as needed */}
+                    <ul className="menu p-4 text-gray-700 font-bold text-xl">
+                      <li>
+                        <Link to="profile" onClick={() => setMobileMenuOpen(false)}>
+                          Profile
+                        </Link>
+                      </li>
                       <li>
                         <Link to="/" onClick={() => setMobileMenuOpen(false)}>
                           LogOut
