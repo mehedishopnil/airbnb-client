@@ -7,7 +7,6 @@ import { PiBookOpenText } from "react-icons/pi";
 import { MdAddHome } from "react-icons/md";
 import { FaHome, FaUser } from "react-icons/fa";
 import { HiOutlineHomeModern } from "react-icons/hi2";
-
 const HostingDashboard = () => {
   return (
     <div>
@@ -15,6 +14,13 @@ const HostingDashboard = () => {
 
         {/* Sidebar for LG screens */}
         <div className="lg:w-64 lg:flex-shrink-0 md:bg-slate-200">
+          <div className="mt-5 ml-5">
+          <Link to='/'><img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/1200px-Airbnb_Logo_B%C3%A9lo.svg.png"
+            className="w-20 md:w-32"
+            alt="Airbnb Logo"
+          /></Link>
+          </div>
           <ul className="menu p-4 text-gray-700 font-bold text-lg">
             <li>
               <Link to="listings">
@@ -73,7 +79,10 @@ const HostingDashboard = () => {
 
       {/* Mobile navigation */}
       <div className="lg:hidden">
-        <Disclosure as="div" className="lg:hidden">
+      
+
+       <div>
+         <Disclosure as="div" className="lg:hidden">
           {({ open }) => (
             <>
               <Transition
@@ -86,6 +95,9 @@ const HostingDashboard = () => {
                 leaveTo="-translate-x-full"
               >
                 <Disclosure.Panel className=" p-4">
+                <div>
+          
+        </div>
                   <ul className="menu text-gray-700 font-bold text-xl">
                     <li>
                       <Link to="reservation">Reservations</Link>
@@ -108,6 +120,7 @@ const HostingDashboard = () => {
             </>
           )}
         </Disclosure>
+       </div>
       </div>
     </div>
   );

@@ -1,20 +1,20 @@
 import { useContext, useState } from 'react';
-import { FaTree, FaUmbrellaBeach, FaWarehouse } from 'react-icons/fa';
 import Cards from './Cards/Cards';
-import { MdHouseboat } from 'react-icons/md';
-import { GiIsland } from 'react-icons/gi';
 import { AuthContext } from '../../providers/AuthProvider/AuthProvider';
 import { BsSearch } from 'react-icons/bs';
+import { FaTree, FaUmbrellaBeach, FaWarehouse } from 'react-icons/fa';
+import { MdHouseboat } from 'react-icons/md';
+import { GiIsland } from 'react-icons/gi';
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchTerm, setSearchTerm] = useState(''); // New state for search term
+  const [searchTerm, setSearchTerm] = useState('');
   const itemsPerPage = 9;
 
   const { hotelData } = useContext(AuthContext);
 
-  const categories = Array.from(new Set(hotelData.map((item) => item.category)));
+  const selectedCategories = ['Tropical', 'Beach', 'Tiny homes', 'Farms', 'Islands'];
 
   const categoryIcons = {
     'Tropical': <FaTree />,
@@ -25,15 +25,13 @@ const Home = () => {
   };
 
   const filteredData = hotelData
-  .filter((item) => (selectedCategory === 'All' || item.category === selectedCategory))
-  .filter(
-    (item) =>
-      (item.name && item.name.toLowerCase().includes(searchTerm.toLowerCase())) ||
-      (item.location && item.location.toLowerCase().includes(searchTerm.toLowerCase()))
-  )
-  .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
-
-
+    .filter((item) => (selectedCategory === 'All' || item.category === selectedCategory))
+    .filter(
+      (item) =>
+        (item.name && item.name.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        (item.location && item.location.toLowerCase().includes(searchTerm.toLowerCase()))
+    )
+    .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   const totalPages = Math.ceil(
     hotelData.filter((item) => selectedCategory === 'All' || item.category === selectedCategory).length / itemsPerPage
@@ -49,22 +47,22 @@ const Home = () => {
     <div className="container mx-auto">
       {/* Search bar with search icon */}
       <div className="flex justify-center items-center mt-5 mb-4">
-      <div className="bg-white rounded-full border p-3 shadow w-4/5 mx-auto flex items-center">
-        <BsSearch size={20} className="text-gray-500 mr-2" />
-        <input
-          type="text"
-          placeholder="Search by name or location..."
-          className="w-full h-10 pl-4 rounded-full outline-none"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-      </div>
+        <div className="bg-white rounded-full border p-3 shadow w-4/5 mx-auto flex items-center">
+          <BsSearch size={20} className="text-gray-500 mr-2" />
+          <input
+            type="text"
+            placeholder="Search by name or location..."
+            className="w-full h-10 pl-4 rounded-full outline-none"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
       </div>
 
       {/* Filter Section */}
       <div className="flex flex-col justify-center items-center mb-4 pt-10 mx-4 md:px-10">
         <div className="flex items-center justify-center space-y-2 md:space-x-2 md:space-y-0">
-          {categories.map((category, index) => (
+          {selectedCategories.map((category, index) => (
             <button
               key={index}
               className={`flex justify-center items-center mr-5 mt-2 md:m-0 p-4 md:p-5 border rounded ${

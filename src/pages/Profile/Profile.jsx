@@ -1,4 +1,3 @@
-import React from 'react';
 import { TbGenderFemale } from "react-icons/tb";
 import { SlGraduation } from "react-icons/sl";
 import { MdWorkOutline } from "react-icons/md";
@@ -50,11 +49,11 @@ const Profile = () => {
       </div>
 
       {/* Bottom Section */}
-      <div className='lg:grid  lg:items-center lg:-ml-10 lg:-mt-5 lg:pr-10'>
-      <div className="mx-10  lg:col-span-4 lg:space-y-3">
+      <div className='lg:grid  lg:items-center lg:-ml-10 lg:-mt-5 lg:pr-10 lg:border-l-2 border-gray-300'>
+      <div className="mx-10  lg:col-span-4 lg:space-y-3 ">
         <div className="flex gap-1 items-center mb-2">
           <TbGenderFemale />
-          <p className="text-gray-700">Born in the 70s</p>
+          <p className="text-gray-700">Born in the 90s</p>
         </div>
 
         <div className="flex gap-1 items-center mb-2">
@@ -96,7 +95,7 @@ const Profile = () => {
         </div>
         <div className="lg:mx-5 pt-5 px-2 lg:-m-3 lg:w-10/12">
           <p>
-            I'm 'your name', I've lived in 6 different countries, and I still
+            I'm Ibrahim Elsamra, I've lived in 6 different countries, and I still
             spend way too much time traveling. Here at home, we have two dogs
             named Hiro and Pasqual. We cannot wait to meet you.
           </p>
